@@ -10,7 +10,7 @@ public class Node : MonoBehaviour
     public Color startColor;
 
     private Renderer rend;
-
+    public Color noMoneyColor;
 
     public GameObject turret;
     public Vector3 positionOffset;
@@ -47,7 +47,18 @@ public class Node : MonoBehaviour
             return;
         if (!buildManager.CanBuild)
             return;
-        GetComponent<Renderer>().material.color = hovColor;
+
+
+        if (buildManager.hasMoney)
+        {
+            rend.material.color = hovColor;
+        }
+        else
+        {
+            rend.material.color = noMoneyColor;
+        }
+
+
     }
 
 

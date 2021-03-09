@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     private Transform target;
 
     public float speed = 70f;
+
+    public int damage = 50;
     public GameObject impactEffect;
 
     public void Seek(Transform _target)
@@ -38,9 +40,26 @@ public class Bullet : MonoBehaviour
     }
     void HitTarget()
     {
+        Damage(target);
         GameObject effectInst = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInst, 2f);
-        Destroy(target.gameObject);
+        //Destroy(target.gameObject);
         Destroy(gameObject);
+    }
+
+    void Damage(Transform enemy)
+    {
+        
+        Enemy e = enemy.GetComponent<Enemy>();
+
+        
+        e.TakeDamage(damage);
+
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

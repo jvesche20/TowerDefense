@@ -10,7 +10,7 @@ public class WaveSpawner : MonoBehaviour
 
 
 
-    public float timeWaves = 5f;
+    public float timeWaves = 20f;
     private float countDown = 2f;
 
     private int waveNumber = 0;
@@ -27,7 +27,9 @@ public class WaveSpawner : MonoBehaviour
         // removes countDown once every second
         countDown -= Time.deltaTime;
 
-        waveCountdownTxt.text = Mathf.Round(countDown).ToString();
+        countDown = Mathf.Clamp(countDown, 0f, Mathf.Infinity);
+
+        waveCountdownTxt.text = string.Format("{0:00.00}", countDown);
     }
 
     IEnumerator SpawnWave()
