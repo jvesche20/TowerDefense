@@ -12,7 +12,7 @@ public class Node : MonoBehaviour
     private Renderer rend;
 
 
-    private GameObject turret;
+    public GameObject turret;
     public Vector3 positionOffset;
 
     BuildManager buildManager;
@@ -22,9 +22,14 @@ public class Node : MonoBehaviour
         startColor = rend.material.color;
         buildManager = BuildManager.instance;
     }
+
+    public Vector3 GetBuildPosition()
+    {
+        return transform.position + positionOffset;
+    }
     void OnMouseDown()
     {
-        if (buildManager.getTurretToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
 
 
@@ -33,15 +38,14 @@ public class Node : MonoBehaviour
             Debug.Log("Cant build there");
             return;
         }
-        GameObject turretToBuild = buildManager.getTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        buildManager.BuildTurretOn(this);
 
     }
     void OnMouseEnter()
     {
         if (EventSystem.current.IsPointerOverGameObject())
             return;
-        if (buildManager.getTurretToBuild() == null)
+        if (!buildManager.CanBuild)
             return;
         GetComponent<Renderer>().material.color = hovColor;
     }

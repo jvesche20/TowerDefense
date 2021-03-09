@@ -1879,6 +1879,7 @@ GameObject:
   - component: {fileID: 397119430}
   - component: {fileID: 397119429}
   - component: {fileID: 397119431}
+  - component: {fileID: 397119432}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -1931,7 +1932,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardTurretPrefab: {fileID: 7164389969778019244, guid: 77fcd180f67191f4b8cd07af9f4f0f76,
     type: 3}
-  UpgradedTurretPrefab: {fileID: 0}
+  UpgradedTurretPrefab: {fileID: 7164389969778019244, guid: 77fcd180f67191f4b8cd07af9f4f0f76,
+    type: 3}
+--- !u!114 &397119432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397119428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a70637f2fae2a8f43a6d272bda4e6b11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMoney: 500
 --- !u!1001 &399065523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3530,7 +3545,7 @@ PrefabInstance:
     - target: {fileID: 6266097299563219162, guid: 57e51f2160544d844ba159e74880b2c3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseUpgradedTurret
+      value: SelectUpgradedTurret
       objectReference: {fileID: 0}
     - target: {fileID: 6266097299563219162, guid: 57e51f2160544d844ba159e74880b2c3,
         type: 3}
@@ -5264,6 +5279,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9459cece2f049a3419d2d34f96aa8fb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standartTurret:
+    prefab: {fileID: 7164389969778019244, guid: 77fcd180f67191f4b8cd07af9f4f0f76,
+      type: 3}
+    cost: 100
+  upgradedTurret:
+    prefab: {fileID: 0}
+    cost: 0
 --- !u!1 &1020554027
 GameObject:
   m_ObjectHideFlags: 0
@@ -11445,7 +11467,7 @@ PrefabInstance:
     - target: {fileID: 6266097299563219162, guid: 57e51f2160544d844ba159e74880b2c3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PurchaseStandardTurret
+      value: SelectStandardTurret
       objectReference: {fileID: 0}
     - target: {fileID: 6266097299563219162, guid: 57e51f2160544d844ba159e74880b2c3,
         type: 3}
