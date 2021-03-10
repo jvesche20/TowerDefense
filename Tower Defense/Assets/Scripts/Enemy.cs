@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public float speed = 10f;
@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private float health;
     public GameObject deathEffect;
 
+    public Image healthBar;
+
     void Start()
     {
         target = Waypoints.points[0];
@@ -27,6 +29,8 @@ public class Enemy : MonoBehaviour
     {
 
         health -= amount;
+        healthBar.fillAmount = health / startHealth;
+
         if (health <= 0 && !isDead)
         {
             Die();

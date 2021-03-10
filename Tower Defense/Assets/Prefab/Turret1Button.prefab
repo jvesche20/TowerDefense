@@ -152,8 +152,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standartTurret:
-    prefab: {fileID: 0}
-    cost: 0
+    prefab: {fileID: 6423324538844406043, guid: 77fcd180f67191f4b8cd07af9f4f0f76,
+      type: 3}
+    cost: 100
   upgradedTurret:
-    prefab: {fileID: 0}
-    cost: 0
+    prefab: {fileID: 2222795212120584852, guid: 383c860fae43b3c46b010a0b1f6d99b9,
+      type: 3}
+    cost: 250
