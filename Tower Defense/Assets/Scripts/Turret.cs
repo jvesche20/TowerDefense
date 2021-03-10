@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Turret : MonoBehaviour
 {
-
+    public AudioSource playSound;
+    public AudioSource destroySound;
     private Transform target;
 
     private float timer2 = 25f;
@@ -35,6 +36,8 @@ public class Turret : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //playSound = GetComponent<AudioSource>();
+        //destroySound = GetComponent<AudioSource>();
         health1 = healthStart;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
@@ -71,11 +74,15 @@ public class Turret : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //playSound.Play();
+        destroySound.Play();
         if (timer2 <= 0)
         {
+            destroySound.Play();
             Destroy(gameObject);
             
+
+
         }
         //Debug.Log(timer);
         // removes countDown once every second

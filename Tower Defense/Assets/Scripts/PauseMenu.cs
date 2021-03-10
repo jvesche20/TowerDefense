@@ -38,11 +38,16 @@ public class PauseMenu : MonoBehaviour
 
     public void Menu()
     {
-        Debug.Log("Go to menu");
+        Time.timeScale = 1f;
+        LoadScene("Main Menu 1");
     }
 
     public void doExitGame()
     {
         Application.Quit();
+    }
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class livesUI : MonoBehaviour
 {
@@ -16,6 +17,16 @@ public class livesUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(PlayerStats.Lives <= 0)
+        {
+            LoadScene("Lose Screen");
+        }
         livesText.text = "Lives: " + PlayerStats.Lives.ToString();
+    }
+
+    public void LoadScene(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }
