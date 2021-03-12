@@ -8,19 +8,22 @@ public class Enemy : MonoBehaviour
 
     private Transform target;
     private int wavepointInx = 0;
-
+    
     public int value = 50;
+
+    
 
     // public int health = 100;
     private bool isDead = false;
     public float startHealth = 100;
-    private float health;
+    public float health;
     public GameObject deathEffect;
 
     public Image healthBar;
 
     void Start()
     {
+        
         target = Waypoints.points[0];
         health = startHealth;
     }

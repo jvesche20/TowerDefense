@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class Turret : MonoBehaviour
 {
     public AudioSource playSound;
-    public AudioSource destroySound;
+    private AudioSource ShootSound;
+    
     private Transform target;
-
+    
     private float timer2 = 25f;
 
     private float health1;
@@ -38,6 +39,7 @@ public class Turret : MonoBehaviour
     {
         //playSound = GetComponent<AudioSource>();
         //destroySound = GetComponent<AudioSource>();
+        ShootSound = GetComponent<AudioSource>();
         health1 = healthStart;
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
@@ -71,14 +73,15 @@ public class Turret : MonoBehaviour
             target = null;
         }
     }
-    // Update is called once per frame
+    
     void Update()
     {
-        //playSound.Play();
-        destroySound.Play();
+        
         if (timer2 <= 0)
         {
-            destroySound.Play();
+
+            
+            //destroySound.Play();
             Destroy(gameObject);
             
 
@@ -90,16 +93,8 @@ public class Turret : MonoBehaviour
 
         timer2 = Mathf.Clamp(timer2, 0f, Mathf.Infinity);
 
-        //timerText.text = "Time Left: " + string.Format("{0:00.00}", timer);
+        
 
-        /*
-         * 
-         *  health start = 100
-         *  x seconds long till the turrent is destroyed
-         * 
-         * number has to go from 0-1
-         * 
-         */
         
         Debug.Log("health " + (4 * timer2) / healthStart);
         healthBar.fillAmount = (4*timer2) / healthStart;
@@ -115,6 +110,7 @@ public class Turret : MonoBehaviour
 
         if(fireCountdown <= 0)
         {
+
             Shoot();
             fireCountdown = 1f / fireRate;
         }
@@ -125,6 +121,8 @@ public class Turret : MonoBehaviour
 
     void Shoot()
     {
+        ShootSound.Play();
+
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();

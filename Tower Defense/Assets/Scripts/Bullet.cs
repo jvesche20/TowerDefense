@@ -6,22 +6,34 @@ public class Bullet : MonoBehaviour
 {
 
     private Transform target;
+    private AudioSource impact;
 
+    
     public float speed = 70f;
     public float explosionRad = 0f;
     public int damage = 50;
     public GameObject impactEffect;
 
+    void Start()
+    {
+
+        impact = GetComponent<AudioSource>();
+     
+    }
+
     public void Seek(Transform _target)
     {
+
         target = _target;
     }
+
+    
 
     // Update is called once per frame
     void Update()
     {
         
-        if(target == null)
+        if (target == null)
         {
             Destroy(gameObject);
             return;
@@ -32,6 +44,7 @@ public class Bullet : MonoBehaviour
 
         if(dir.magnitude <= distanceThisFrame)
         {
+            
             HitTarget();
             return;
         }
@@ -42,6 +55,7 @@ public class Bullet : MonoBehaviour
     }
     void HitTarget()
     {
+        
         Damage(target);
         GameObject effectInst = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectInst, 5f);
@@ -69,17 +83,20 @@ public class Bullet : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
+
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRad);
     }
 
     void Explode()
     {
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRad);
         foreach(Collider collider in colliders)
         {
             if(collider.tag == "Enemy")
             {
+                
                 Damage(collider.transform);
             }
         }

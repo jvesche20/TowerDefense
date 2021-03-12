@@ -501,8 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a3c2b3b6c451b478753b901041283b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playSound: {fileID: 5711634795422024052}
-  destroySound: {fileID: 7573528993675374804}
+  playSound: {fileID: 0}
   healthStart: 100
   healthBar: {fileID: 8116430631956548876}
   range: 30
@@ -520,12 +519,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2222795212120584852}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 6e0a1521f681a484e999291fa3600aed, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f6619fc2a80f0714aa4de95c3327985b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.076
   m_Pitch: 1
   Loop: 0
   Mute: 0
